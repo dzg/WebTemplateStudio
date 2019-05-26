@@ -17,12 +17,14 @@ const SortableSidebarItem = SortableElement(
     page,
     idx,
     handleInputChange,
-    handleCloseClick
+    handleCloseClick,
+    totalPageNumber
   }: {
     page: any;
     idx: number;
     handleInputChange: any;
     handleCloseClick?: (idx: number) => void;
+    totalPageNumber: number;
   }) => {
     return (
       <DraggableSidebarItem
@@ -33,6 +35,7 @@ const SortableSidebarItem = SortableElement(
         handleInputChange={handleInputChange}
         handleCloseClick={handleCloseClick}
         idx={idx + 1}
+        totalPageNumber = {totalPageNumber}
       />
     );
     // use idx+1 to prevent falsiness of 0th value
@@ -105,6 +108,7 @@ const SortableList = SortableContainer(
                   page={page}
                   handleInputChange={handleInputChange}
                   handleCloseClick={handleCloseClick}
+                  totalPageNumber = {pages.length}
                 />
               );
             })
